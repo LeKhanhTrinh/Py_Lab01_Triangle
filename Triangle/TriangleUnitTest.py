@@ -7,7 +7,7 @@ import unittest
 import math
 
 def typeOfTriangle(a, b, c):
-    if (float(a)) and (float(b)) and (float(c)):
+    if (isinstance(a, float) or isinstance(a, int)) and (isinstance(b, float) or isinstance(b, int)) and (isinstance(c, float) or isinstance(c, int)):
         if ((a + b) > c) and ((a + c) > b) and ((c + b) > a):
             if a == b and b == c and c == a:
                 print"Tam giac deu\n"
@@ -35,25 +35,25 @@ def typeOfTriangle(a, b, c):
 class triangle(unittest.TestCase):
     def testInputInvalid(self): # Test invalid
         print "Test case: a = %r, b = %r, c = %r" % ("-1",2,0)
-        self.assertFalse(typeOfTriangle("-1", 2, 0), "Khong dung chuan so nguyen")
-    def testInputValid(self):   # Test invalid
+        self.assertFalse(typeOfTriangle("-1", 2.0, 0.0), "Khong dung chuan so nguyen")
+    def testInputValid(self):   # Test invalid.
         print "Test case: a = %r, b = %r, c = %r" % (1,4,5)
-        self.assertFalse(typeOfTriangle(1, 4, 5), "Khong dung do dai canh")
+        self.assertFalse(typeOfTriangle(1.0, 4.0, 5.0), "Khong dung do dai canh")
     def testTGVuong(self):  # Tam giac vuong
         print "Test case: a = %r, b = %r, c = %r" % (3,4,5)
-        self.assertTrue(typeOfTriangle(3, 4, 5), "Khong phai tam giac vuong")
+        self.assertTrue(typeOfTriangle(3.0, 4.0, 5.0), "Khong phai tam giac vuong")
     def testTGcan(self):    # Tam giac can
         print "Test case: a = %r, b = %r, c = %r" % (2,2,1)
-        self.assertTrue(typeOfTriangle(2, 2, 1), "Khong phai tam giac can")
+        self.assertTrue(typeOfTriangle(2.0, 2.0, 1.0), "Khong phai tam giac can")
     def testTGdeu(self):    # Tam giac deu
         print "Test case: a = %r, b = %r, c = %r" % (2,2,2)
-        self.assertTrue(typeOfTriangle(2, 2, 2), "Khong phai tam giac deu")
+        self.assertTrue(typeOfTriangle(2.0, 2.0, 2.0), "Khong phai tam giac deu")
     def testTGvuongcan(self):   # Tam giac vuong can
         print "Test case: a = %r, b = %r, c = %r" % (1,1,math.sqrt(2))
-        self.assertTrue(typeOfTriangle(1, 1, math.sqrt(2)), "Khong phai tam giac deu")
+        self.assertTrue(typeOfTriangle(1.0, 1.0, math.sqrt(2.0)), "Khong phai tam giac deu")
     def testTGthuong(self):     # Tam giac thuong
         print "Test case: a = %r, b = %r, c = %r" % (3, 5, 7)
-        self.assertTrue(typeOfTriangle(3, 5, 7), "Khong phai tam giac thuong")
+        self.assertTrue(typeOfTriangle(3, 5.0, 7.0), "Khong phai tam giac thuong")
         
 def main():
     unittest.main()
